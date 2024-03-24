@@ -41,7 +41,7 @@ MongoDB was chosen due to its flexibility in handling various types of data and 
     npm install
 4.  Set up environment variables:
     ```bash
-    Create a .env file in the root directory and define environment variables such as database connection URI, JWT secret, etc.
+    Create a .env file in the root directory and define environment variables such as database connection URI, PORT,Weather API,Distance API,API Keys respectively.
 5. Start the server:
    ```bash
    npm start
