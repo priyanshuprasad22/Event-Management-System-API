@@ -23,7 +23,7 @@ const app=express();
 app.set('trust proxy',1);
 
 app.get('/',(req,res)=>{
-    res.status(200).send('<h1> Jobs API</h1><a href="/api-docs">Documentation</a>');
+    res.status(200).send('<h1> Event Management System API</h1><a href="/api-docs">Documentation</a>');
 })
 app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDocument));
 
