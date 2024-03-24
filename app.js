@@ -11,10 +11,22 @@ const errorHandler = require('./middleware/errorhandler')
 const notfound = require('./middleware/not-found');
 
 
+const swaggerUI = require('swagger-ui-express');
+const YAML= require('yamljs');
+const swaggerDocument= YAML.load('./swagger.yaml');
+
+
+
 dotenv.config();
 const app=express();
 
 app.set('trust proxy',1);
+
+app.get('/',(req,res)=>{
+    res.status(200).send('<h1> Jobs API</h1><a href="/api-docs">Documentation</a>');
+})
+app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDocument));
+
 app.use(express.json());
 app.use(helmet());
 app.use(cors());

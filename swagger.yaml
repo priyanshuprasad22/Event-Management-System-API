@@ -1,0 +1,138 @@
+openapi: 3.0.0
+info:
+  title: Event-Mangement-System
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://event-management-system-api-ttgv.onrender.com/api/v1/events
+  variables: {}
+paths:
+  /find:
+    get:
+      tags:
+      - Events
+      summary: http://event-management-system-api-ttgv.onrender.com/api/v1/events/find?latitude=40.7128&longitude=-74.0060&date=2024-03-15
+      operationId: http://event-management-system-api-ttgv.onrender.com/api/v1/events/find?latitude=40.7128&longitude=-74.0060&date=2024-03-15
+      parameters:
+      - name: latitude
+        in: query
+        description: Enter the users geographic description - latitude
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: number
+          format: double
+          example: 40.7128
+      - name: longitude
+        in: query
+        description: Enter the users geographic description - longitude
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: number
+          format: double
+          example: -74.006
+      - name: date
+        in: query
+        description: Enter the date
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: 2024-03-15
+      responses:
+        '200':
+          description: 'Success'
+          headers: {}
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema: {}
+      deprecated: false
+  /add:
+    post:
+      tags:
+      - Events
+      summary: http://event-management-system-api-ttgv.onrender.com/api/v1/events/add
+      operationId: http://event-management-system-api-ttgv.onrender.com/api/v1/events/add
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/httpsevent-management-system-api-ttgv.onrender.comapiv1eventsadd-request'
+              - example:
+                  event_name: Birthday Party
+                  city_name: Los Angeles
+                  date: 2024-04-15
+                  time: 20:00
+                  latitude: 34.0522
+                  longitude: -118.2437
+            example:
+              event_name: Birthday Party
+              city_name: Los Angeles
+              date: 2024-04-15
+              time: 20:00
+              latitude: 34.0522
+              longitude: -118.2437
+        required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers: {}
+        '400':
+          description: All fields are required
+          content:
+            application/json:
+              schema: {}
+      deprecated: false
+components:
+  schemas:
+    httpsevent-management-system-api-ttgv.onrender.comapiv1eventsadd-request:
+      title: httpsevent-management-system-api-ttgv.onrender.comapiv1eventsadd-request
+      required:
+      - event_name
+      - city_name
+      - date
+      - time
+      - latitude
+      - longitude
+      type: object
+      properties:
+        event_name:
+          type: string
+          description: Name of the event
+        city_name:
+          type: string
+          description: Name of the city
+        date:
+          type: string
+          description: Date of the event
+        time:
+          type: string
+          description: time of the event
+        latitude:
+          type: number
+          description: geographic description - latitude
+        longitude:
+          type: number
+          description: geographic description - longitude
+      description: Add an event.
+      example:
+        event_name: Birthday Party
+        city_name: Los Angeles
+        date: 2024-04-15
+        time: 20:00
+        latitude: 34.0522
+        longitude: -118.2437
+tags:
+- name: Misc
+  description: ''
+- name: Events
+  description: ''
