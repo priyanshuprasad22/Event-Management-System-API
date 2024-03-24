@@ -46,6 +46,14 @@ MongoDB was chosen due to its flexibility in handling various types of data and 
    ```bash
    npm start
 
+## Deployement
+ The Event - Management - System - API is deployed using render and is accessible using link:-
+[Event-Management-System-API](https://event-management-system-api-ttgv.onrender.com/) 
+
+## Documentation
+Docs is available at :-
+[Docs](https://event-management-system-api-ttgv.onrender.com/api-docs/)
+
 
 
 
